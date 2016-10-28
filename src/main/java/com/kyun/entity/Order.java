@@ -1,19 +1,15 @@
-package kyun.dao;
+package com.kyun.entity;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Date;
 import java.util.Collection;
 
-/**
- * Created by Yan Kurobane on 28/10/2016.
- */
 @Entity
 public class Order {
     private int id;
     private BigDecimal cast;
     private Date date;
-    private int fkUser;
     private Collection<CarInOrder> carInOrdersById;
     private User userByFkUser;
 
@@ -47,16 +43,6 @@ public class Order {
         this.date = date;
     }
 
-    @Basic
-    @Column(name = "fk_user")
-    public int getFkUser() {
-        return fkUser;
-    }
-
-    public void setFkUser(int fkUser) {
-        this.fkUser = fkUser;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -64,12 +50,8 @@ public class Order {
 
         Order order = (Order) o;
 
-        if (id != order.id) return false;
-        if (fkUser != order.fkUser) return false;
-        if (cast != null ? !cast.equals(order.cast) : order.cast != null) return false;
-        if (date != null ? !date.equals(order.date) : order.date != null) return false;
+        return id == order.id && (cast != null ? cast.equals(order.cast) : order.cast == null && (date != null ? date.equals(order.date) : order.date == null));
 
-        return true;
     }
 
     @Override
@@ -77,7 +59,6 @@ public class Order {
         int result = id;
         result = 31 * result + (cast != null ? cast.hashCode() : 0);
         result = 31 * result + (date != null ? date.hashCode() : 0);
-        result = 31 * result + fkUser;
         return result;
     }
 

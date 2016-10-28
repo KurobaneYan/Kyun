@@ -1,16 +1,11 @@
-package kyun.dao;
+package com.kyun.entity;
 
 import javax.persistence.*;
 
-/**
- * Created by Yan Kurobane on 28/10/2016.
- */
 @Entity
-@Table(name = "user_role", schema = "kyundb", catalog = "")
+@Table(name = "user_role", schema = "kyundb")
 public class UserRole {
     private int id;
-    private int fkUser;
-    private int fkRole;
     private User userByFkUser;
     private Role roleByFkRole;
 
@@ -24,26 +19,6 @@ public class UserRole {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "fk_user")
-    public int getFkUser() {
-        return fkUser;
-    }
-
-    public void setFkUser(int fkUser) {
-        this.fkUser = fkUser;
-    }
-
-    @Basic
-    @Column(name = "fk_role")
-    public int getFkRole() {
-        return fkRole;
-    }
-
-    public void setFkRole(int fkRole) {
-        this.fkRole = fkRole;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -51,19 +26,13 @@ public class UserRole {
 
         UserRole userRole = (UserRole) o;
 
-        if (id != userRole.id) return false;
-        if (fkUser != userRole.fkUser) return false;
-        if (fkRole != userRole.fkRole) return false;
+        return id == userRole.id;
 
-        return true;
     }
 
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + fkUser;
-        result = 31 * result + fkRole;
-        return result;
+        return id;
     }
 
     @ManyToOne

@@ -6,13 +6,13 @@
   <session-factory>
     <property name="connection.url">jdbc:mysql://localhost:3306/kyundb</property>
     <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-    <mapping class="kyun.dao.Car"/>
-    <mapping class="kyun.dao.CarInOrder"/>
-    <mapping class="kyun.dao.CarPhoto"/>
-    <mapping class="kyun.dao.Order"/>
-    <mapping class="kyun.dao.Role"/>
-    <mapping class="kyun.dao.User"/>
-    <mapping class="kyun.dao.UserRole"/>
+    <mapping class="com.kyun.entity.Car"/>
+    <mapping class="com.kyun.entity.CarInOrder"/>
+    <mapping class="com.kyun.entity.CarPhoto"/>
+    <mapping class="com.kyun.entity.Order"/>
+    <mapping class="com.kyun.entity.Role"/>
+    <mapping class="com.kyun.entity.User"/>
+    <mapping class="com.kyun.entity.UserRole"/>
 
     <!-- DB schema will be updated if needed -->
     <!-- <property name="hbm2ddl.auto">update</property> -->

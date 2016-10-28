@@ -1,11 +1,8 @@
-package kyun.dao;
+package com.kyun.entity;
 
 import javax.persistence.*;
 import java.util.Collection;
 
-/**
- * Created by Yan Kurobane on 28/10/2016.
- */
 @Entity
 public class Role {
     private int id;
@@ -50,11 +47,8 @@ public class Role {
 
         Role role = (Role) o;
 
-        if (id != role.id) return false;
-        if (name != null ? !name.equals(role.name) : role.name != null) return false;
-        if (isAdmin != null ? !isAdmin.equals(role.isAdmin) : role.isAdmin != null) return false;
+        return id == role.id && (name != null ? name.equals(role.name) : role.name == null && (isAdmin != null ? isAdmin.equals(role.isAdmin) : role.isAdmin == null));
 
-        return true;
     }
 
     @Override

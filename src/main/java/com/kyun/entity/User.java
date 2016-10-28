@@ -1,11 +1,8 @@
-package kyun.dao;
+package com.kyun.entity;
 
 import javax.persistence.*;
 import java.util.Collection;
 
-/**
- * Created by Yan Kurobane on 28/10/2016.
- */
 @Entity
 public class User {
     private int id;
@@ -73,13 +70,8 @@ public class User {
 
         User user = (User) o;
 
-        if (id != user.id) return false;
-        if (name != null ? !name.equals(user.name) : user.name != null) return false;
-        if (surname != null ? !surname.equals(user.surname) : user.surname != null) return false;
-        if (email != null ? !email.equals(user.email) : user.email != null) return false;
-        if (phoneNumber != null ? !phoneNumber.equals(user.phoneNumber) : user.phoneNumber != null) return false;
+        return id == user.id && (name != null ? name.equals(user.name) : user.name == null && (surname != null ? surname.equals(user.surname) : user.surname == null && (email != null ? email.equals(user.email) : user.email == null && (phoneNumber != null ? phoneNumber.equals(user.phoneNumber) : user.phoneNumber == null))));
 
-        return true;
     }
 
     @Override

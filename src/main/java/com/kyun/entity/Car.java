@@ -1,12 +1,9 @@
-package kyun.dao;
+package com.kyun.entity;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Collection;
 
-/**
- * Created by Yan Kurobane on 28/10/2016.
- */
 @Entity
 public class Car {
     private int id;
@@ -107,16 +104,8 @@ public class Car {
 
         Car car = (Car) o;
 
-        if (id != car.id) return false;
-        if (productionYear != car.productionYear) return false;
-        if (amountLeft != car.amountLeft) return false;
-        if (name != null ? !name.equals(car.name) : car.name != null) return false;
-        if (manufacturer != null ? !manufacturer.equals(car.manufacturer) : car.manufacturer != null) return false;
-        if (carClass != null ? !carClass.equals(car.carClass) : car.carClass != null) return false;
-        if (bodyStyle != null ? !bodyStyle.equals(car.bodyStyle) : car.bodyStyle != null) return false;
-        if (price != null ? !price.equals(car.price) : car.price != null) return false;
+        return id == car.id && productionYear == car.productionYear && amountLeft == car.amountLeft && (name != null ? name.equals(car.name) : car.name == null && (manufacturer != null ? manufacturer.equals(car.manufacturer) : car.manufacturer == null && (carClass != null ? carClass.equals(car.carClass) : car.carClass == null && (bodyStyle != null ? bodyStyle.equals(car.bodyStyle) : car.bodyStyle == null && (price != null ? price.equals(car.price) : car.price == null)))));
 
-        return true;
     }
 
     @Override

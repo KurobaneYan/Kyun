@@ -1,17 +1,12 @@
-package kyun.dao;
+package com.kyun.entity;
 
 import javax.persistence.*;
 
-/**
- * Created by Yan Kurobane on 28/10/2016.
- */
 @Entity
-@Table(name = "car_in_order", schema = "kyundb", catalog = "")
+@Table(name = "car_in_order", schema = "kyundb")
 public class CarInOrder {
     private int id;
     private int amount;
-    private int fkCar;
-    private int fkOrder;
     private Car carByFkCar;
     private Order orderByFkOrder;
 
@@ -35,26 +30,6 @@ public class CarInOrder {
         this.amount = amount;
     }
 
-    @Basic
-    @Column(name = "fk_car")
-    public int getFkCar() {
-        return fkCar;
-    }
-
-    public void setFkCar(int fkCar) {
-        this.fkCar = fkCar;
-    }
-
-    @Basic
-    @Column(name = "fk_order")
-    public int getFkOrder() {
-        return fkOrder;
-    }
-
-    public void setFkOrder(int fkOrder) {
-        this.fkOrder = fkOrder;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -62,20 +37,14 @@ public class CarInOrder {
 
         CarInOrder that = (CarInOrder) o;
 
-        if (id != that.id) return false;
-        if (amount != that.amount) return false;
-        if (fkCar != that.fkCar) return false;
-        if (fkOrder != that.fkOrder) return false;
+        return id == that.id && amount == that.amount;
 
-        return true;
     }
 
     @Override
     public int hashCode() {
         int result = id;
         result = 31 * result + amount;
-        result = 31 * result + fkCar;
-        result = 31 * result + fkOrder;
         return result;
     }
 
