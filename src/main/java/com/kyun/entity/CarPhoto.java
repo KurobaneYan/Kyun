@@ -48,7 +48,9 @@ public class CarPhoto {
 
         CarPhoto carPhoto = (CarPhoto) o;
 
-        return id == carPhoto.id && Arrays.equals(photo, carPhoto.photo) && (description != null ? description.equals(carPhoto.description) : carPhoto.description == null);
+        if (id != carPhoto.id) return false;
+        if (!Arrays.equals(photo, carPhoto.photo)) return false;
+        return description != null ? description.equals(carPhoto.description) : carPhoto.description == null;
 
     }
 

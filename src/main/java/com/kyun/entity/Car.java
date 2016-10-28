@@ -104,7 +104,14 @@ public class Car {
 
         Car car = (Car) o;
 
-        return id == car.id && productionYear == car.productionYear && amountLeft == car.amountLeft && (name != null ? name.equals(car.name) : car.name == null && (manufacturer != null ? manufacturer.equals(car.manufacturer) : car.manufacturer == null && (carClass != null ? carClass.equals(car.carClass) : car.carClass == null && (bodyStyle != null ? bodyStyle.equals(car.bodyStyle) : car.bodyStyle == null && (price != null ? price.equals(car.price) : car.price == null)))));
+        if (id != car.id) return false;
+        if (productionYear != car.productionYear) return false;
+        if (amountLeft != car.amountLeft) return false;
+        if (name != null ? !name.equals(car.name) : car.name != null) return false;
+        if (manufacturer != null ? !manufacturer.equals(car.manufacturer) : car.manufacturer != null) return false;
+        if (carClass != null ? !carClass.equals(car.carClass) : car.carClass != null) return false;
+        if (bodyStyle != null ? !bodyStyle.equals(car.bodyStyle) : car.bodyStyle != null) return false;
+        return price != null ? price.equals(car.price) : car.price == null;
 
     }
 

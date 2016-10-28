@@ -50,7 +50,9 @@ public class Order {
 
         Order order = (Order) o;
 
-        return id == order.id && (cast != null ? cast.equals(order.cast) : order.cast == null && (date != null ? date.equals(order.date) : order.date == null));
+        if (id != order.id) return false;
+        if (cast != null ? !cast.equals(order.cast) : order.cast != null) return false;
+        return date != null ? date.equals(order.date) : order.date == null;
 
     }
 

@@ -47,7 +47,9 @@ public class Role {
 
         Role role = (Role) o;
 
-        return id == role.id && (name != null ? name.equals(role.name) : role.name == null && (isAdmin != null ? isAdmin.equals(role.isAdmin) : role.isAdmin == null));
+        if (id != role.id) return false;
+        if (name != null ? !name.equals(role.name) : role.name != null) return false;
+        return isAdmin != null ? isAdmin.equals(role.isAdmin) : role.isAdmin == null;
 
     }
 

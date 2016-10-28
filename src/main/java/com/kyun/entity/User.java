@@ -70,7 +70,11 @@ public class User {
 
         User user = (User) o;
 
-        return id == user.id && (name != null ? name.equals(user.name) : user.name == null && (surname != null ? surname.equals(user.surname) : user.surname == null && (email != null ? email.equals(user.email) : user.email == null && (phoneNumber != null ? phoneNumber.equals(user.phoneNumber) : user.phoneNumber == null))));
+        if (id != user.id) return false;
+        if (name != null ? !name.equals(user.name) : user.name != null) return false;
+        if (surname != null ? !surname.equals(user.surname) : user.surname != null) return false;
+        if (email != null ? !email.equals(user.email) : user.email != null) return false;
+        return phoneNumber != null ? phoneNumber.equals(user.phoneNumber) : user.phoneNumber == null;
 
     }
 
