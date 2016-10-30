@@ -1,6 +1,6 @@
 package com.kyun.main;
 
-import com.kyun.dao.UserDAO;
+import com.kyun.dao.GenericDAO;
 import com.kyun.entity.User;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -10,19 +10,14 @@ public class Main {
     public static void main(String[] args) {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
 
-        UserDAO userDAO = context.getBean(UserDAO.class);
 
-//        User user = new User();
-//        user.setName("Exal");
-//        user.setSurname("Lukchu");
-//        user.setEmail("exal.lukchu@gmail.com");
-//
-//        userDAO.save(user);
+        GenericDAO dao = (GenericDAO) context.getBean("userDAO");
 
-        List<User> users = userDAO.list();
+        @SuppressWarnings("unchecked")
+        List<User> users = dao.list();
 
         for (User u : users) {
-            System.out.println("U: " + u + " " + u.getEmail());
+            System.out.println(u.getName());
         }
 
         // close resources

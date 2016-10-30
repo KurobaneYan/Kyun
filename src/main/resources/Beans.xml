@@ -45,11 +45,8 @@
         </property>
     </bean>
 
-    <bean id="carDAO" class="com.kyun.dao.CarDAOImpl">
-        <property name="sessionFactory" ref="hibernateSessionFactory"/>
-    </bean>
-
-    <bean id="userDAO" class="com.kyun.dao.UserDAOImpl">
+    <bean id="userDAO" class="com.kyun.dao.GenericDAOImpl">
+        <constructor-arg value="com.kyun.entity.User"/>
         <property name="sessionFactory" ref="hibernateSessionFactory"/>
     </bean>
 

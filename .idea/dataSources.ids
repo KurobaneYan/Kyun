@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - kyundb@localhost" uuid="a2994b0d-d319-41ac-8e86-a15a818d95e1">
+    <database-info product="MySQL" version="5.5.23" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+      <schema id="1" name="kyundb">
+        <visible>1</visible>
+      </schema>
+      <schema id="2" name="information_schema"/>
+      <schema id="3" name="mydb"/>
+      <schema id="4" name="mysql"/>
+      <schema id="5" name="performance_schema"/>
+      <table id="6" parent="1" name="car"/>
+      <table id="7" parent="1" name="car_in_order"/>
+      <table id="8" parent="1" name="car_photo"/>
+      <table id="9" parent="1" name="order"/>
+      <table id="10" parent="1" name="role"/>
+      <table id="11" parent="1" name="user"/>
+      <table id="12" parent="1" name="user_role"/>
+      <column id="13" parent="6" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="14" parent="6" name="name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)|0</data-type>
+      </column>
+      <column id="15" parent="6" name="manufacturer">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)|0</data-type>
+      </column>
+      <column id="16" parent="6" name="production_year">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="17" parent="6" name="class">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)|0</data-type>
+      </column>
+      <column id="18" parent="6" name="body_style">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)|0</data-type>
+      </column>
+      <column id="19" parent="6" name="price">
+        <mandatory>1</mandatory>
+        <data-type>decimal(10,2) unsigned|0</data-type>
+      </column>
+      <column id="20" parent="6" name="amount_left">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned|0</data-type>
+      </column>
+      <index id="21" parent="6" name="id_UNIQUE">
+        <columns>id</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="22" parent="6" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <key id="23" parent="6" name="id_UNIQUE">
+        <columns>id</columns>
+        <underlying-index>id_UNIQUE</underlying-index>
+      </key>
+      <column id="24" parent="7" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="25" parent="7" name="amount">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned|0</data-type>
+      </column>
+      <column id="26" parent="7" name="fk_car">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="27" parent="7" name="fk_order">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <index id="28" parent="7" name="fk_car_idx">
+        <columns>fk_car</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="29" parent="7" name="fk_order_idx">
+        <columns>fk_order</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="30" parent="7" name="id_UNIQUE">
+        <columns>id</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="31" parent="7" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <key id="32" parent="7" name="id_UNIQUE">
+        <columns>id</columns>
+        <underlying-index>id_UNIQUE</underlying-index>
+      </key>
+      <foreign-key id="33" parent="7" name="fk_car">
+        <columns>fk_car</columns>
+        <ref-key>~.car.id_UNIQUE</ref-key>
+        <cascade-update-rule>no_action</cascade-update-rule>
+        <cascade-delete-rule>no_action</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="34" parent="7" name="fk_order">
+        <columns>fk_order</columns>
+        <ref-key>~.order.PRIMARY</ref-key>
+        <cascade-update-rule>no_action</cascade-update-rule>
+        <cascade-delete-rule>no_action</cascade-delete-rule>
+      </foreign-key>
+      <column id="35" parent="8" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="36" parent="8" name="photo">
+        <mandatory>1</mandatory>
+        <data-type>blob|0</data-type>
+      </column>
+      <column id="37" parent="8" name="description">
+        <data-type>varchar(45)|0</data-type>
+      </column>
+      <column id="38" parent="8" name="car_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <index id="39" parent="8" name="fk_car_photo_car1_idx">
+        <columns>car_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="40" parent="8" name="id_UNIQUE">
+        <columns>id</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="41" parent="8" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <key id="42" parent="8" name="id_UNIQUE">
+        <columns>id</columns>
+        <underlying-index>id_UNIQUE</underlying-index>
+      </key>
+      <foreign-key id="43" parent="8" name="fk_car_photo_car1">
+        <columns>car_id</columns>
+        <ref-key>~.car.id_UNIQUE</ref-key>
+        <cascade-update-rule>no_action</cascade-update-rule>
+        <cascade-delete-rule>no_action</cascade-delete-rule>
+      </foreign-key>
+      <column id="44" parent="9" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="45" parent="9" name="cast">
+        <mandatory>1</mandatory>
+        <data-type>decimal(12,2) unsigned|0</data-type>
+      </column>
+      <column id="46" parent="9" name="date">
+        <mandatory>1</mandatory>
+        <data-type>date|0</data-type>
+      </column>
+      <column id="47" parent="9" name="fk_user">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <index id="48" parent="9" name="fk_user_idx">
+        <columns>fk_user</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="49" parent="9" name="id_UNIQUE">
+        <columns>id</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="50" parent="9" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <key id="51" parent="9" name="id_UNIQUE">
+        <columns>id</columns>
+        <underlying-index>id_UNIQUE</underlying-index>
+      </key>
+      <foreign-key id="52" parent="9" name="fk_user_order">
+        <columns>fk_user</columns>
+        <ref-key>~.user.PRIMARY</ref-key>
+        <cascade-update-rule>no_action</cascade-update-rule>
+        <cascade-delete-rule>no_action</cascade-delete-rule>
+      </foreign-key>
+      <column id="53" parent="10" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="54" parent="10" name="name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)|0</data-type>
+      </column>
+      <column id="55" parent="10" name="is_admin">
+        <data-type>tinyint(1)|0</data-type>
+      </column>
+      <index id="56" parent="10" name="id_UNIQUE">
+        <columns>id</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="57" parent="10" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <key id="58" parent="10" name="id_UNIQUE">
+        <columns>id</columns>
+        <underlying-index>id_UNIQUE</underlying-index>
+      </key>
+      <column id="59" parent="11" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="60" parent="11" name="name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)|0</data-type>
+      </column>
+      <column id="61" parent="11" name="surname">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)|0</data-type>
+      </column>
+      <column id="62" parent="11" name="email">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)|0</data-type>
+      </column>
+      <column id="63" parent="11" name="phone_number">
+        <data-type>varchar(45)|0</data-type>
+      </column>
+      <index id="64" parent="11" name="id_UNIQUE">
+        <columns>id</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="65" parent="11" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <key id="66" parent="11" name="id_UNIQUE">
+        <columns>id</columns>
+        <underlying-index>id_UNIQUE</underlying-index>
+      </key>
+      <column id="67" parent="12" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="68" parent="12" name="fk_user">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="69" parent="12" name="fk_role">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <index id="70" parent="12" name="fk_role_idx">
+        <columns>fk_role</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="71" parent="12" name="fk_user_idx">
+        <columns>fk_user</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="72" parent="12" name="id_UNIQUE">
+        <columns>id</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="73" parent="12" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <key id="74" parent="12" name="id_UNIQUE">
+        <columns>id</columns>
+        <underlying-index>id_UNIQUE</underlying-index>
+      </key>
+      <foreign-key id="75" parent="12" name="fk_user_role">
+        <columns>fk_user</columns>
+        <ref-key>~.user.id_UNIQUE</ref-key>
+        <cascade-update-rule>no_action</cascade-update-rule>
+        <cascade-delete-rule>no_action</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="76" parent="12" name="fk_role_user">
+        <columns>fk_role</columns>
+        <ref-key>~.role.id_UNIQUE</ref-key>
+        <cascade-update-rule>no_action</cascade-update-rule>
+        <cascade-delete-rule>no_action</cascade-delete-rule>
+      </foreign-key>
+    </database-model>
+  </data-source>
+</component>
