@@ -105,4 +105,9 @@ public class User {
     public void setUserRolesById(Collection<UserRole> userRolesById) {
         this.userRolesById = userRolesById;
     }
+
+    @Override
+    public String toString() {
+        return getId() + " " + getName() + " " + getEmail() + " " + getPhoneNumber();
+    }
 }

@@ -51,6 +51,20 @@
         <property name="sessionFactory" ref="hibernateSessionFactory"/>
     </bean>
 
+    <bean id="userRoleDAO" class="com.kyun.dao.GenericDAOImpl">
+        <constructor-arg value="com.kyun.entity.UserRole"/>
+        <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    </bean>
+
+    <bean id="roleDAO" class="com.kyun.dao.GenericDAOImpl">
+        <constructor-arg value="com.kyun.entity.Role"/>
+        <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    </bean>
+    
+    <bean id="userService" class="com.kyun.service.UserServiceImpl">
+        <property name="userDAO" ref="userDAO" />
+    </bean>
+
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="${jdbc.driverClassName}" />
         <property name="url" value="${jdbc.url}" />

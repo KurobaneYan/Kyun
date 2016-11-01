@@ -17,86 +17,62 @@ public class GenericDAOImpl<T, PK extends Serializable> implements GenericDAO<T,
     }
 
     public void create(T object) {
-        Session session = sessionFactory.openSession();
         Transaction transaction = null;
-        try {
+        try (Session session = sessionFactory.openSession()) {
             transaction = session.beginTransaction();
             session.persist(object);
             transaction.commit();
-        }
-        catch (Exception e) {
-            if (transaction!=null) transaction.rollback();
-        }
-        finally {
-            session.close();
+        } catch (Exception e) {
+            if (transaction != null) transaction.rollback();
         }
     }
 
     public T read(PK id) {
-        Session session = sessionFactory.openSession();
         Transaction transaction = null;
         T item = null;
-        try {
+        try (Session session = sessionFactory.openSession()) {
             transaction = session.beginTransaction();
             item = session.get(type, id);
             transaction.commit();
-        }
-        catch (Exception e) {
-            if (transaction!=null) transaction.rollback();
-        }
-        finally {
-            session.close();
+        } catch (Exception e) {
+            if (transaction != null) transaction.rollback();
         }
         return item;
     }
 
     public void update(T o) {
-        Session session = sessionFactory.openSession();
         Transaction transaction = null;
-        try {
+        try (Session session = sessionFactory.openSession()) {
             transaction = session.beginTransaction();
             session.update(o);
             transaction.commit();
-        }
-        catch (Exception e) {
-            if (transaction!=null) transaction.rollback();
-        }
-        finally {
-            session.close();
+        } catch (Exception e) {
+            if (transaction != null) transaction.rollback();
         }
     }
 
     public void delete(T o) {
-        Session session = sessionFactory.openSession();
         Transaction transaction = null;
-        try {
+        try (Session session = this.sessionFactory.openSession()) {
             transaction = session.beginTransaction();
-            session.delete(o);
+            session.delete(0);
             transaction.commit();
-        }
-        catch (Exception e) {
-            if (transaction!=null) transaction.rollback();
-        }
-        finally {
-            session.close();
+        } catch (Exception e) {
+            if (transaction != null) transaction.rollback();
         }
     }
 
     @SuppressWarnings("unchecked")
     public List<T> list() {
-        Session session = this.sessionFactory.openSession();
         List<T> list = null;
         Transaction transaction = null;
-        try {
+        try (Session session = this.sessionFactory.openSession()) {
             transaction = session.beginTransaction();
             Criteria criteria = session.createCriteria(type);
             list = criteria.list();
-        }
-        catch (Exception e) {
+            transaction.commit();
+        } catch (Exception e) {
             if (transaction != null) transaction.rollback();
-        }
-        finally {
-            session.close();
         }
         return list;
     }
