@@ -9,13 +9,9 @@ import java.util.List;
     @PK - Primary Key for search in db
  */
 public interface GenericDAO <T, PK extends Serializable> {
-
     void create(T newInstance);
-
     T read(PK id);
-
     void update(T transientObject);
-
     void delete(T persistentObject);
 
     List<T> list();

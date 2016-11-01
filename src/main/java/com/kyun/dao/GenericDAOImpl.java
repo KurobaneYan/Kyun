@@ -16,17 +16,19 @@ public class GenericDAOImpl<T, PK extends Serializable> implements GenericDAO<T,
         this.type = type;
     }
 
+    @Override
     public void create(T object) {
         Transaction transaction = null;
         try (Session session = sessionFactory.openSession()) {
             transaction = session.beginTransaction();
-            session.persist(object);
+            session.saveOrUpdate(object);
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) transaction.rollback();
         }
     }
 
+    @Override
     public T read(PK id) {
         Transaction transaction = null;
         T item = null;
@@ -40,6 +42,7 @@ public class GenericDAOImpl<T, PK extends Serializable> implements GenericDAO<T,
         return item;
     }
 
+    @Override
     public void update(T o) {
         Transaction transaction = null;
         try (Session session = sessionFactory.openSession()) {
@@ -51,6 +54,7 @@ public class GenericDAOImpl<T, PK extends Serializable> implements GenericDAO<T,
         }
     }
 
+    @Override
     public void delete(T o) {
         Transaction transaction = null;
         try (Session session = this.sessionFactory.openSession()) {
@@ -62,6 +66,7 @@ public class GenericDAOImpl<T, PK extends Serializable> implements GenericDAO<T,
         }
     }
 
+    @Override
     @SuppressWarnings("unchecked")
     public List<T> list() {
         List<T> list = null;

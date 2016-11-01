@@ -16,10 +16,12 @@ public class UserServiceImpl implements UserService {
         this.userDAO = userDAO;
     }
 
+    @Override
     public void addUser(User user) {
         getUserDAO().create(user);
     }
 
+    @Override
     public List<User> getAllUsers() {
         return getUserDAO().list();
     }
